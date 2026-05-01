@@ -31,24 +31,6 @@
       scroll-behavior: smooth;
     }
 
-    /* ── Scrollbar — identique restaurant ── */
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #0d1f3c;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #3b8bfa;
-      border-radius: 3px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #2a75e8;
-    }
-
     body {
       background: var(--navy);
       color: var(--white);
@@ -383,32 +365,28 @@
       overflow: hidden;
     }
 
-    /* ── Hero — style identique à accueil ── */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('images/apropoos.jpg') center/cover no-repeat;
-      transform: scale(1.06);
+      background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800&q=80') center/cover no-repeat;
+      transform: scale(1.08);
       animation: slowZoom 20s ease-in-out infinite alternate;
     }
 
     @keyframes slowZoom {
       from {
-        transform: scale(1.06);
+        transform: scale(1.08)
       }
 
       to {
-        transform: scale(1.12);
+        transform: scale(1.16)
       }
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right,
-          rgba(0, 0, 0, 0.80) 0%,
-          rgba(0, 0, 0, 0.55) 50%,
-          rgba(0, 0, 0, 0.25) 100%);
+      background: linear-gradient(135deg, rgba(6, 14, 28, 0.92) 0%, rgba(10, 22, 40, 0.75) 50%, rgba(13, 33, 68, 0.60) 100%);
     }
 
     .orb {
@@ -526,18 +504,16 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 800;
+      font-size: clamp(40px, 5vw, 70px);
+      font-weight: 700;
       line-height: 1.1;
       margin-bottom: 22px;
-      color: #fff;
-      letter-spacing: -0.01em;
-      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 4px 40px rgba(0, 0, 0, .5);
     }
 
     .hero h1 em {
       font-style: normal;
-      color: #3ab5ff;
+      color: var(--accent);
     }
 
     .hero-desc {
@@ -1099,6 +1075,35 @@
     .site-footer .logo:visited {
       text-decoration: none;
     }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 1024px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner, .footer-top { grid-template-columns: 1fr 1fr; }
+      .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 900px) {
+      .header-inner { padding: 0 20px; }
+      section, .site-footer { padding-left: 20px; padding-right: 20px; }
+      .hero-content { padding: 0 20px; }
+    }
+    @media (max-width: 768px) {
+      .team-grid, .values-grid, .mission-cards, .footer-inner, .footer-top { grid-template-columns: 1fr; }
+      .nav-main { gap: 15px; }
+      .nav-main a { font-size: 0.82rem; }
+      .btn-account span { display: none; }
+      .hero h1 { font-size: clamp(32px, 8vw, 42px); }
+    }
+    @media (max-width: 480px) {
+      .nav-main { gap: 8px; }
+      .nav-main a { font-size: 0.72rem; }
+      .header-inner { padding: 0 10px; }
+      .hero-stats { gap: 20px; }
+      .stat-num { font-size: 24px; }
+      .btn-reserve { padding: 7px 12px; font-size: 0.8rem; }
+      .nav-right { gap: 5px; }
+    }
   </style>
 </head>
 
@@ -1113,7 +1118,7 @@
         <a href="index.html">Activités</a>
         <a href="boutique.html">Boutique</a>
         <a href="hebergement.html">Hébergements</a>
-
+      
         <a href="restaurant.html">Restaurants & Cafés</a>
       </nav>
       <div class="nav-right">

@@ -5,18 +5,11 @@
     box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
-
-/* ── Scrollbar — identique restaurant ── */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #0d1f3c; }
-::-webkit-scrollbar-thumb { background: #3b8bfa; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #2a75e8; }
-
 body {
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
     background: #0f172a;
+
 }
 
 /* HEADER — géré par navbar.css sur toutes les pages */
@@ -26,16 +19,13 @@ header {
 }
 
 .logo {
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-    flex-shrink: 0;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .logo span {
-    color: #3b8bfa;
+    color: #3b82f6;
 }
 
 /* NAV — anciens liens (hors nouveau navbar) */
@@ -97,15 +87,12 @@ nav:not(.nav-main) a.active::after {
 
 }
 
-/* TITLE — même style que les autres pages (Activités, Boutique…) */
+/* TITLE */
 .hero h1 {
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-size: 54px;
     font-weight: 800;
-    color: #fff;
     line-height: 1.1;
-    margin-bottom: 22px;
-    letter-spacing: -0.01em;
+    margin-bottom: 20px;
     text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 }
 
@@ -149,7 +136,7 @@ nav:not(.nav-main) a.active::after {
     }
 
     /* NAV MOBILE */
-    nav {
+    nav:not(.nav-main) {
         position: absolute;
         top: 70px;
         right: 0;
@@ -164,11 +151,11 @@ nav:not(.nav-main) a.active::after {
         padding: 20px 0;
     }
 
-    nav.active {
+    nav:not(.nav-main).active {
         display: flex;
     }
 
-    nav a {
+    nav:not(.nav-main) a {
         margin: 12px 0;
         font-size: 16px;
     }
@@ -230,7 +217,7 @@ nav:not(.nav-main) a.active::after {
         display: block;
     }
 
-    nav {
+    nav:not(.nav-main) {
         display: none;
     }
 }
@@ -967,186 +954,22 @@ html {
     transform: scale(1.05);
 }
 
-/* ══════════════════════════════════════
-   SYNC NAVBAR — aligne accueil.html avec les autres pages
-   (surcharge les règles Poppins uniquement pour le header)
-══════════════════════════════════════ */
-
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 68px;
-    background: transparent;
-    transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+/* ── RESPONSIVE MOBILE FIXES (match restaurant.html) ── */
+@media (max-width: 1024px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
 }
-
-.site-header.scrolled {
-    background: rgba(8, 18, 36, 0.65);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.07);
-}
-
-.header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    padding: 0 48px;
-}
-
-/* Liens nav centrés — même police et espacement que les autres pages */
-.nav-main {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-
-.nav-main a {
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
-    font-size: 0.94rem !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.01em !important;
-    color: white !important;
-    text-decoration: none;
-    padding: 7.9px 0;
-    white-space: nowrap;
-    position: relative;
-    transition: color 0.2s;
-}
-
-.nav-main a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 3.5px;
-    background: rgb(53, 87, 237);
-    transition: width 0.5s ease;
-    z-index: 10;
-}
-
-.nav-main a:hover::after,
-.nav-main a.active::after {
-    width: 100%;
-}
-
-/* Bouton Mon compte */
-.btn-account {
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
-    font-size: 0.88rem !important;
-    font-weight: 500 !important;
-    color: rgba(255, 255, 255, 0.82) !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 7px 12px !important;
-    border-radius: 8px !important;
-    cursor: pointer;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    transition: background 0.2s, color 0.2s;
-}
-
-.btn-account:hover {
-    background: rgba(255, 255, 255, 0.10) !important;
-    color: #fff !important;
-}
-
-/* Bouton Réserver en ligne */
-.btn-reserve {
-    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
-    font-size: 0.88rem !important;
-    font-weight: 700 !important;
-    background: #2ea84f !important;
-    color: #fff !important;
-    border: none !important;
-    padding: 9px 22px !important;
-    border-radius: 50px !important;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s, transform 0.15s;
-}
-
-.btn-reserve:hover {
-    background: #3fc460 !important;
-    transform: translateY(-1px);
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    z-index: 1;
-}
-
-/* Mobile navbar fix for accueil only */
 @media (max-width: 900px) {
-  .site-header .header-inner {
-    position: relative;
-    padding: 0 14px !important;
-  }
-
-  .site-header .nav-main {
-    display: flex !important;
-    position: absolute !important;
-    left: 12px !important;
-    right: 12px !important;
-    top: calc(100% + 8px) !important;
-    transform: translateY(-8px) scale(0.98) !important;
-    transform-origin: top center !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    padding: 8px !important;
-    border-radius: 14px !important;
-    background: linear-gradient(160deg, rgba(13, 28, 55, 0.97) 0%, rgba(8, 18, 36, 0.99) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transition: opacity .2s ease, transform .2s ease !important;
-    z-index: 1200 !important;
-  }
-
-  .site-header.mobile-nav-open .nav-main {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transform: translateY(0) scale(1) !important;
-  }
-
-  .site-header .nav-main a {
-    font-size: 0.95rem !important;
-    padding: 10px 12px !important;
-    border-radius: 9px !important;
-    margin: 0 !important;
-  }
-
-  .site-header .nav-main a::after {
-    display: none !important;
-  }
-
-  .site-header .nav-main a:hover,
-  .site-header .nav-main a.active {
-    background: rgba(59, 139, 250, 0.18) !important;
-  }
-
-  .site-header .nav-right .btn-reserve {
-    display: none !important;
-  }
+    .about { padding: 20px 20px 60px; }
+    .contact-section { padding: 40px 20px; }
+    .footer { padding: 40px 20px 24px; }
 }
-
+@media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .contact-container { flex-direction: column; gap: 40px; }
+    .stats { margin-top: -40px; }
+}
 @media (max-width: 480px) {
-  .site-header .header-inner {
-    padding: 0 10px !important;
-  }
+    .hero { padding: 0 10px; }
+    .stats { gap: 15px; }
+    .stat-card { width: 100%; }
 }

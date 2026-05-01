@@ -31,24 +31,6 @@
       scroll-behavior: smooth;
     }
 
-    /* ── Scrollbar — identique restaurant ── */
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #0d1f3c;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #3b8bfa;
-      border-radius: 3px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #2a75e8;
-    }
-
     body {
       background: var(--navy);
       color: var(--white);
@@ -353,7 +335,7 @@
     }
 
     .btn-reserve {
-      background: #2ea84f;
+      background:  #2ea84f;
       color: #fff;
       border: none;
       padding: 9px 22px;
@@ -367,7 +349,7 @@
     }
 
     .btn-reserve:hover {
-      background:#2ea84f;
+      background: #2ea84f;
       transform: translateY(-1px);
     }
 
@@ -380,32 +362,27 @@
       overflow: hidden;
     }
 
-    /* ── Hero — style identique à accueil ── */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('images/nouvelles.jpg') center/cover no-repeat;
-      transform: scale(1.06);
+      background: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1800&q=80') center/cover no-repeat;
       animation: slowZoom 20s ease-in-out infinite alternate;
     }
 
     @keyframes slowZoom {
       from {
-        transform: scale(1.06);
+        transform: scale(1.06)
       }
 
       to {
-        transform: scale(1.12);
+        transform: scale(1.14)
       }
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right,
-          rgba(0, 0, 0, 0.80) 0%,
-          rgba(0, 0, 0, 0.55) 50%,
-          rgba(0, 0, 0, 0.25) 100%);
+      background: linear-gradient(135deg, rgba(6, 14, 28, 0.93) 0%, rgba(10, 22, 40, 0.78) 55%, rgba(13, 33, 68, 0.60) 100%);
     }
 
     .orb {
@@ -503,18 +480,16 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 800;
+      font-size: clamp(42px, 6vw, 78px);
+      font-weight: 700;
       line-height: 1.1;
       margin-bottom: 22px;
-      color: #fff;
-      letter-spacing: -0.01em;
-      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 4px 40px rgba(0, 0, 0, .5);
     }
 
     .hero h1 em {
       font-style: normal;
-      color: #3ab5ff;
+      color: var(--accent);
     }
 
     .hero-desc {
@@ -1044,6 +1019,34 @@
     .site-footer .logo:active,
     .site-footer .logo:visited {
       text-decoration: none;
+    }
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media (max-width: 1024px) {
+      .featured-grid { grid-template-columns: 1fr; gap: 40px; }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner, .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .header-inner { padding: 0 20px; }
+      section, .site-footer, .featured, .all-news, .newsletter { padding-left: 20px; padding-right: 20px; }
+      .hero-content { padding: 0 20px; }
+    }
+    @media (max-width: 768px) {
+      .news-grid, .footer-inner, .footer-top { grid-template-columns: 1fr; }
+      .news-card-sm { grid-template-columns: 1fr; }
+      .news-card-sm .sm-img { height: 200px; }
+      .nav-main { gap: 15px; }
+      .nav-main a { font-size: 0.82rem; }
+      .btn-account span { display: none; }
+      .hero h1 { font-size: clamp(32px, 8vw, 42px); }
+    }
+    @media (max-width: 480px) {
+      .nav-main { gap: 8px; }
+      .nav-main a { font-size: 0.72rem; }
+      .header-inner { padding: 0 10px; }
+      .btn-reserve { padding: 7px 12px; font-size: 0.8rem; }
+      .nav-right { gap: 5px; }
     }
   </style>
 </head>
