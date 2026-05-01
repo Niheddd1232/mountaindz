@@ -13,8 +13,14 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
-const SECRET = 'mountaindz_jwt_secret_2026'; // change in production!
+const PORT = Number(process.env.PORT) || 3000;
+const SECRET = process.env.JWT_SECRET || 'mountaindz_jwt_secret_2026';
+const DEFAULT_ADMIN_EMAIL = process.env.DEFAULT_ADMIN_EMAIL || 'admin@mountaindz.com';
+const DEFAULT_ADMIN_PASSWORD = process.env.DEFAULT_ADMIN_PASSWORD || 'Admin2026!';
+
+if (!process.env.JWT_SECRET) {
+  console.warn('WARNING: JWT_SECRET is not set. Using an insecure fallback secret.');
+}
 
 function safeParseArticles(articlesRaw) {
   if (!articlesRaw) return [];
@@ -174,12 +180,12 @@ db.exec(`
 `);
 
 // ── Seed default admin if not exists ────────────────────
-const adminExists = db.prepare("SELECT id FROM users WHERE email = ?").get('admin@mountaindz.com');
+const adminExists = db.prepare('SELECT id FROM users WHERE email = ?').get(DEFAULT_ADMIN_EMAIL);
 if (!adminExists) {
-  const hashed = bcrypt.hashSync('Admin2026!', 10);
+  const hashed = bcrypt.hashSync(DEFAULT_ADMIN_PASSWORD, 10);
   db.prepare(`INSERT INTO users (prenom,nom,email,password,role)
-              VALUES (?,?,?,?,?)`).run('Admin', 'MountainDZ', 'admin@mountaindz.com', hashed, 'admin');
-  console.log('✅ Admin créé: admin@mountaindz.com / Admin2026!');
+              VALUES (?,?,?,?,?)`).run('Admin', 'MountainDZ', DEFAULT_ADMIN_EMAIL, hashed, 'admin');
+  console.log(`✅ Admin account seeded: ${DEFAULT_ADMIN_EMAIL}`);
 }
 
 // ══════════════════════════════════════════════════════════
@@ -462,5 +468,5 @@ app.patch('/api/admin/candidatures/:id', adminRequired, (req, res) => {
 app.listen(PORT, () => {
   console.log(`\n🏔️  MountainDZ API running → http://localhost:${PORT}`);
   console.log(`📊  Dashboard          → http://localhost:${PORT}/dashboard`);
-  console.log(`🔑  Admin login        → admin@mountaindz.com / Admin2026!\n`);
+  console.log(`🔑  Admin login        → ${DEFAULT_ADMIN_EMAIL}\n`);
 });

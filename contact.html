@@ -1818,7 +1818,12 @@
           message: document.getElementById('message').value.trim()
         };
 
-        const res = await fetch('http://localhost:3000/api/messages', {
+        const apiBase = (
+          window.location.protocol === 'file:'
+            ? 'http://localhost:3000/api'
+            : `${window.location.origin}/api`
+        );
+        const res = await fetch(`${apiBase}/messages`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)

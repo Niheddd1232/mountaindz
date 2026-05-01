@@ -301,7 +301,11 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const API = 'http://localhost:3000/api';
+const API = (
+  window.location.protocol === 'file:'
+    ? 'http://localhost:3000/api'
+    : `${window.location.origin}/api`
+);
 
 // ── TOKEN: check both keys (signin.html saves as mdz_token, dashboard saves as mdz_admin_token)
 let TOKEN = localStorage.getItem('mdz_admin_token') || localStorage.getItem('mdz_token');

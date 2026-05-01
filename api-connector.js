@@ -12,7 +12,11 @@
 
 'use strict';
 
-const API_URL = 'http://localhost:3000/api'; // change if deployed
+const API_URL = (
+  window.location.protocol === 'file:'
+    ? 'http://localhost:3000/api'
+    : `${window.location.origin}/api`
+);
 
 // ══════════════════════════════════════════════════════════
 //  MDZ OBJECT — same interface as auth.js but uses real API

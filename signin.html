@@ -248,7 +248,11 @@
   </div>
 
   <script>
-    const API = 'http://localhost:3000/api';
+    const API = (
+      window.location.protocol === 'file:'
+        ? 'http://localhost:3000/api'
+        : `${window.location.origin}/api`
+    );
     const returnTo = new URLSearchParams(location.search).get('return') || 'accueil.html';
     const errIcon = '⚠ ';
     const spinHTML = '<span class="spin">⏳</span> ';
@@ -260,8 +264,12 @@
     // ─────────────────────────────────────────────────────
     function redirect(user) {
       if (user && user.role === 'admin') {
-        // Fonctionne que la page soit ouverte via file:// ou localhost
-        window.location.href = 'http://localhost:3000/dashboard';
+        // Works for local file mode and deployed environments
+        window.location.href = (
+          window.location.protocol === 'file:'
+            ? 'http://localhost:3000/dashboard'
+            : `${window.location.origin}/dashboard`
+        );
       } else {
         window.location.href = returnTo;
       }
