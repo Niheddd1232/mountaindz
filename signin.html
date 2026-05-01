@@ -11,7 +11,7 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{--blue:#4f8ef7;--blue-dark:#2a6be0;--bg:#0b1120;--card:rgba(15,22,42,0.72);--border:rgba(255,255,255,0.10);--input-bg:rgba(255,255,255,0.05);--text:#f0f4ff;--muted:#7a8baa}
-    body{min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;color:var(--text);padding:20px;background:var(--bg);overflow:hidden}
+    body{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;color:var(--text);padding:20px;background:var(--bg);overflow-x:hidden;overflow-y:auto}
     .bg-scene{position:fixed;inset:0;z-index:0;overflow:hidden;background-color:var(--bg)}
     .bg-scene img{width:100%;height:100%;object-fit:cover;opacity:0.25;filter:contrast(1.1) brightness(0.9);transform:scale(1.02);animation:slowZoom 30s linear infinite alternate}
     @keyframes slowZoom{0%{transform:scale(1.02)}100%{transform:scale(1.1)}}
@@ -79,6 +79,139 @@
     .g-cancel{text-align:center;margin-top:20px;font-size:13px;color:#1a73e8;cursor:pointer;font-weight:500}
     @keyframes spin{to{transform:rotate(360deg)}}
     .spin{animation:spin 0.9s linear infinite;display:inline-block}
+
+    @media (max-width: 1024px) {
+      .card {
+        width: min(520px, 100%);
+        padding: 34px 28px 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        align-items: flex-start;
+        padding: 16px;
+      }
+      .card {
+        width: 100%;
+        margin: 8px 0 14px;
+        border-radius: 22px;
+        padding: 28px 20px 24px;
+        max-height: calc(100svh - 24px);
+        overflow-y: auto;
+      }
+      .close-btn {
+        top: 12px;
+        right: 12px;
+      }
+      .logo {
+        margin-bottom: 16px;
+      }
+      .progress-bar {
+        margin-bottom: 20px;
+      }
+      .fg {
+        margin-bottom: 12px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .btn {
+        padding: 13px;
+      }
+      .btn-ghost {
+        font-size: 0.78rem;
+      }
+      .g-card {
+        width: min(94vw, 380px);
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        align-items: flex-start;
+        justify-content: center;
+        padding: 14px;
+      }
+      .card {
+        width: 100%;
+        margin: 8px 0 16px;
+        border-radius: 20px;
+        padding: 24px 18px 20px;
+        max-height: calc(100svh - 28px);
+        overflow-y: auto;
+      }
+      .logo {
+        margin-bottom: 18px;
+      }
+      .logo-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+      }
+      .logo-text {
+        font-size: 1.3rem;
+      }
+      .welcome-big {
+        font-size: 1.28rem;
+      }
+      .welcome-sub {
+        font-size: 0.8rem;
+        margin-bottom: 18px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .btn {
+        padding: 13px;
+      }
+      .g-card {
+        width: min(92vw, 380px);
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 10px;
+      }
+      .card {
+        margin: 6px 0 10px;
+        border-radius: 18px;
+        padding: 20px 14px 16px;
+        max-height: calc(100svh - 16px);
+      }
+      .logo-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+      }
+      .logo-text {
+        font-size: 1.15rem;
+      }
+      .section-lbl {
+        font-size: 0.62rem;
+      }
+      .welcome-big {
+        font-size: 1.1rem;
+      }
+      .welcome-sub {
+        font-size: 0.76rem;
+      }
+      .input-wrap input {
+        font-size: 0.9rem;
+        padding: 11px 40px 11px 12px;
+      }
+      .btn {
+        font-size: 0.9rem;
+      }
+      .check-group {
+        font-size: 0.75rem;
+      }
+    }
   </style>
 </head>
 

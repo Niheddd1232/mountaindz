@@ -11,6 +11,12 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --font-display: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --navy: #0d1f3c;
+}
+
 /* ── Scrollbar — identique restaurant ── */
 ::-webkit-scrollbar {
   width: 5px;
@@ -2617,6 +2623,29 @@ html {
   .ecole-tab {
     padding: 7px 14px;
     font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0 12px;
+  }
+
+  .nav-main {
+    gap: 12px;
+  }
+
+  .nav-main a {
+    font-size: 0.74rem;
+  }
+
+  .btn-account {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .btn-reserve {
+    display: none;
   }
 }
 

@@ -1792,4 +1792,21 @@ body {
   .header-inner {
     padding: 0 16px;
   }
+
+  .nav-main {
+    gap: 12px;
+  }
+
+  .nav-main a {
+    font-size: 0.74rem;
+  }
+
+  .btn-account {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .btn-reserve {
+    display: none;
+  }
 }

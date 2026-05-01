@@ -527,3 +527,11 @@ html { scroll-behavior: smooth; }
   .heb-amenities-grid { grid-template-columns:1fr; }
   .header-inner { padding:0 16px; }
 }
+
+@media (max-width:480px) {
+  .header-inner { padding: 0 12px; }
+  .nav-main { gap: 12px; }
+  .nav-main a { font-size: 0.74rem; }
+  .btn-account { padding: 6px 8px; font-size: 0.8rem; }
+  .btn-reserve { display: none; }
+}
